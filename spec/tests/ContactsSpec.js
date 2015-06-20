@@ -3,7 +3,7 @@ describe("Contacts Test Suite", function(){
 
 	//var request = require('request');
 	var request = require('C:/Program Files/nodejs/node_modules/npm/node_modules/request')
-	var base_url = "http://mycontactsvc.com:3000";
+	var base_url = "http://localhost:3000";
 	var contacts_url = base_url + "/contacts";
 
 	describe("hello world", function(){
@@ -31,7 +31,7 @@ describe("Contacts Test Suite", function(){
 			contact.lastName = "peri";
 			contact.phone = "23002300";
 
-			console.log(JSON.stringify(contact));
+			//console.log(JSON.stringify(contact));
 		    
 		    request.post({url: contacts_url,
 		    			  body: contact,
@@ -40,8 +40,9 @@ describe("Contacts Test Suite", function(){
 		    		    function(error, response, body){
 
 							expect(response.statusCode).toBe(200);
-							console.log(body);
+							//console.log(body);
 							idCreated = body;
+							//console.log(idCreated);
 							done();
 					    });
 		});
@@ -84,13 +85,13 @@ describe("Contacts Test Suite", function(){
 	// and retrieves it back.
 	describe("post and get message to contact", function(){
 
-		it("should post message to contact", function(done){
+		xit("should post message to contact", function(done){
 			//TODO: Write your test case here.
 			done();
 
 		});
 
-		it("should get message for contact", function(done){
+		xit("should get message for contact", function(done){
 			//TODO: Write your test case here.
 			done();
 
