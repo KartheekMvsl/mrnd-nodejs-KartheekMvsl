@@ -30,6 +30,7 @@ describe("Contacts Test Suite", function(){
 			contact.firstName = "jagan";
 			contact.lastName = "peri";
 			contact.phone = "23002300";
+			contact.message=[];
 
 			//console.log(JSON.stringify(contact));
 		    
@@ -56,7 +57,7 @@ describe("Contacts Test Suite", function(){
 		    		    function(error, response, body){
 
 							expect(response.statusCode).toBe(200);
-							console.log(body);
+							//console.log(body);
 							expect(body.firstName).toBe("jagan");
 							done();
 					    });
@@ -73,7 +74,7 @@ describe("Contacts Test Suite", function(){
 		    		    function(error, response, body){
 
 							expect(response.statusCode).toBe(200);
-							console.log(body);
+							//console.log(body);
 							expect(body.firstName).toBe("jagan-updated");
 							expect(body.phone).toBe("23002300");
 							done();
@@ -85,14 +86,42 @@ describe("Contacts Test Suite", function(){
 	// and retrieves it back.
 	describe("post and get message to contact", function(){
 
-		xit("should post message to contact", function(done){
+		it("should post message to contact", function(done){
 			//TODO: Write your test case here.
+			var idCreated=0;
+			var msg="hii sir";
+			request.post({url: contacts_url+ "/" + idCreated,
+		    			  body: msg,
+		    			  json: false
+		    			}, 
+		    		    function(error, response, body){
+
+							expect(response.statusCode).toBe(200);
+							//console.log(body);
+							idCreated = body;
+							expect(idCreated).toBe(0);
+							//console.log(idCreated);
+							done();
+					    });
 			done();
 
 		});
 
-		xit("should get message for contact", function(done){
+		it("should get message for contact", function(done){
 			//TODO: Write your test case here.
+			var idCreated=0;
+			var mid=0;
+			request.get({
+							url: contacts_url + "/" + idCreated+"/"+"mid",
+							json: false
+						},
+		    		    function(error, response, body){
+
+							expect(response.statusCode).toBe(200);
+							console.log(body);
+							expect(body).toBe("hii sir");
+							done();
+					    });
 			done();
 
 		});
